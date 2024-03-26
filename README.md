@@ -1,10 +1,14 @@
-Authors: Oriel-Keshia-Dating-App-Offical
+# Authors: Oriel-Keshia-Dating-App-Official
 
-Discription about the website
+## Description about the website
 
-Wireframe images
-Landing Page;
+[Insert a brief description of your website here]
 
-# When Completed TODO:
-Finished Versions 
-Features 
+## Wireframe Images
+
+### Landing Page
+![Landing Page Wireframe](file:///Users/latchy/Downloads/Lowered%20Expectations.drawio%20(3).svg)
+
+## When Completed TODO:
+- [ ] Finished Versions 
+- [ ] Features
