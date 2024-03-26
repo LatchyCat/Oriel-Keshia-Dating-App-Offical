@@ -7,8 +7,10 @@
 ## Wireframe Images
 
 ### Landing Page
-![Landing Page Wireframe](file:///Users/latchy/Downloads/Lowered%20Expectations.drawio%20(3).svg)
+
+![Landing Page Wireframe](./Frame%20Work/Lowered%20Expectations.drawio.png)
 
 ## When Completed TODO:
-- [ ] Finished Versions 
+
+- [ ] Finished Versions
 - [ ] Features
