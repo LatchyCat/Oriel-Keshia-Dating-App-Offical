@@ -8,7 +8,7 @@
 
 ### Landing Page
 
-![Landing Page Wireframe](./Frame%20Work/wireframeCompleted.drawio.png)
+![Landing Page Wireframe](./server/Frame%20Work/wireframeCompleted.drawio.png)
 
 ## TODO:
 
