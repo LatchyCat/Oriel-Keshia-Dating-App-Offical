@@ -1,0 +1,174 @@
+/* TopNav.module.css */
+
+/* Container for TopNav */
+.HoldingCell {
+    display: flex;
+    justify-content: center;
+    border: 5px solid rgb(31, 218, 177);
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    animation: borderAnimation 5s infinite alternate;
+  }
+
+/* Animation for changing border color */
+@keyframes borderAnimation {
+    0% { border-color: rgb(226, 129, 205); } /* Red border color */
+    25% { border-color: rgb(236, 38, 197); } /* Green border color */
+    50% { border-color: rgb(131, 254, 223); } /* Blue border color */
+    75% { border-color: rgb(234, 116, 205); } /* Yellow border color */
+    100% { border-color: rgb(231, 146, 235); } /* Initial border color */
+}
+
+/* Change border color on hover */
+.HoldingCell:hover {
+    animation-play-state: paused;
+}
+
+.StartBox {
+    background-color: #fff;
+    padding: 10px 0;
+}
+
+.BoxTwo {
+    max-width: 1200px; /* Limit maximum width */
+    margin: 0 auto; /* Center the content */
+}
+
+.ButtonContainer {
+    display: flex;
+    justify-content: space-evenly; /* Evenly space the buttons */
+    align-items: center;/* Center the buttons vertically */
+}
+
+.ButtonContainer a {
+    margin: 0 10px; /* Adjust as needed */
+}
+
+/* Default button style */
+.Button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    margin-right: 10px; /* Adjust spacing between buttons */
+    border: 2px solid transparent; /* Transparent border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #09e9d3; /* Romantic pink background */
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    cursor: pointer;
+    font-size: 16px; /* Default font size */
+    font-weight: bold; /* Default font weight */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+.Button:hover {
+    background-color: #ff1493; /* Darker pink on hover */
+    transform: scale(1.05);
+}
+
+/* Login button style */
+.ButtonLogin {
+    padding: 12px 24px; /* Larger padding for login button */
+    font-size: 18px; /* Larger font size for login button */
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff); /* RGB color effect */
+    color: #fff; /* White text color */
+    border: 2px solid transparent; /* Transparent border */
+}
+
+/* Login button hover effect */
+.ButtonLogin:hover {
+    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff); /* Same RGB color effect on hover */
+    border-color: #fff; /* White border color on hover */
+}
+
+/* Register button style */
+.ButtonRegister {
+    padding: 12px 24px; /* Larger padding for register button */
+    font-size: 18px; /* Larger font size for register button */
+    background: linear-gradient(45deg, #ff00ff, #ffff00, #ff0080); /* RGB color effect */
+    color: #fff; /* White text color */
+    border: 2px solid transparent; /* Transparent border */
+}
+
+/* Register button hover effect */
+.ButtonRegister:hover {
+    background: linear-gradient(45deg, #ff00ff, #ffff00, #ff0080); /* Same RGB color effect on hover */
+    border-color: #fff; /* White border color on hover */
+}
+
+/* Dark mode button style */
+.DarkModeButton {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px; /* Default font size */
+    font-weight: bold; /* Default font weight */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Dark mode button hover effect */
+.DarkModeButton:hover {
+    background-color: #555; /* Darker background color on hover */
+    transform: scale(1.05);
+}
+
+Dark mode styles
+.dark-mode .HoldingCell {
+    border-color: #777; /* Darker border color */
+}
+
+.dark-mode .StartBox {
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color */
+}
+
+.dark-mode .Button {
+    background-color: #777; /* Dark button background color */
+    color: #fff; /* Light text color */
+}
+
+.dark-mode .Button:hover {
+    background-color: #555; /* Darker button background color on hover */
+}
+
+/* Love mode button style */
+.LoveModeButton {
+    background-color: #ff69b4; /* Romantic pink background color */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 16px; /* Default font size */
+    font-weight: bold; /* Default font weight */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    position: relative; /* Relative positioning */
+    margin: 8px;
+}
+
+/* Love mode button hover effect */
+.LoveModeButton:hover {
+    background-color: #ff1493; /* Darker pink background color on hover */
+    transform: scale(1.05);
+}
+
+/* Heart icon for love mode button */
+.LoveModeButton::before {
+    content: '\2665'; /* Heart icon */
+    position: absolute; /* Absolute positioning */
+    top: -10px; /* Position heart at the top */
+    right: -10px; /* Position heart at the right */
+    font-size: 24px; /* Heart icon size */
+}
+
+/* Love mode styles */
+.love-mode .Button {
+    background-color: #ffcccc; /* Romantic pink button background color */
+    color: #000; /* Black text color */
+}
+
+.love-mode .Button:hover {
+    background-color: #ff9999; /* Darker pink button background color on hover */
+}
