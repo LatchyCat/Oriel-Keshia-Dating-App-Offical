@@ -3,32 +3,35 @@ import TopNav from './components/TopNav.jsx'
 import BottomNav from './components/BottomNav.jsx'
 import Expert from './views/Expert.jsx'
 import RegisterView from './views/RegisterView.jsx'
-// import DashboardView from './views/DashboardView.jsx'
-// import EditView from './views/EditView.jsx'
+import DashboardView from './views/DashboardView.jsx'
+import ProfileView from './views/ProfileView.jsx'
 import LandingView from './views/LandingView.jsx'
 import LoginView from './views/LoginView.jsx'
-// import ProfileView from './views/ProfileView.jsx'
-
+import EditView from './views/EditView.jsx'
+// import MatchRequestView from './components/MatchRequestView.jsx'
 
 const App = () => {
   return (
-   <div>
-    <BrowserRouter>
-      <TopNav />
-      <Routes>
-        <Route path="/" element={<LandingView/>}/>
-        <Route path="/expert" element={<Expert/>}/>
+    <div>
+      <BrowserRouter>
+        <TopNav />
+        <Routes>
+          <Route path="/" element={<LandingView />} />
+          <Route path="/expert" element={<Expert />} />
 
-        <Route path="/register" element={<RegisterView/>}/>
-        <Route path="/login" element={<LoginView/>}/>
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
 
-        {/* <Route path="/edit" element={<EditView/>}/> */}
+          <Route path="/dashboard" element={<DashboardView />} />
+          <Route path="/profile/:userId" element={<ProfileView />} />
+          <Route path="/edit" element={<EditView />} />
 
-      </Routes>
-      <BottomNav />
+          {/* <Route path="/match-request/:userId" element={<MatchRequestView />} /> */}
+
+        </Routes>
+        <BottomNav />
       </BrowserRouter>
-
-   </div>
+    </div>
   )
 }
 

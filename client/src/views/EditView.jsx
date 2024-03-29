@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import style from '../css/ProfileForm.module.css';
+import style from '../css/EditView.module.css';
 
-const ProfileEditView = () => {
-    const history = useHistory();
-    const [error, setError] = useState(null);
+const EditView = () => {
     const [formData, setFormData] = useState({
         profile_name: '',
         interests: '',
@@ -14,6 +12,27 @@ const ProfileEditView = () => {
         city: '',
         state: '',
     });
+    const [error, setError] = useState(null);
+    const { id } = useParams();
+
+
+    useEffect(() => {
+        if (id) {
+            axios.put(`http://localhost:8000/api/profile/${id}`)
+                .then(res => {
+                    const { profile_name, interests, ethnicity, isEmployed, city, state } = res.data;
+                    setFormData({
+                        profile_name,
+                        interests,
+                        ethnicity,
+                        isEmployed,
+                        city,
+                        state
+                    });
+                })
+                .catch(err => console.log(err));
+        }
+    }, [id]);
 
     const handleInputChange = (e) => {
         setFormData({
@@ -25,12 +44,33 @@ const ProfileEditView = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Add validation logic for profile form fields if needed
-        axios.post("http://localhost:8000/api/profile", formData)
-            .then(() => {
-                // Navigate to the dashboard route upon successful profile creation
-                history.push('/dashboard');
-            })
-            .catch(err => setError("Error creating profile. Please try again later."));
+        if (id) {
+            axios.put(`http://localhost:8000/api/profile/${id}`, formData)
+                .then(() => {
+                    // Navigate to the dashboard route upon successful profile update
+                    window.location.href = '/dashboard';
+                })
+                .catch(err => {
+                    if (err.response && err.response.status === 400) {
+                        setError("Invalid data provided. Please check your inputs.");
+                    } else {
+                        setError("Error updating profile. Please try again later.");
+                    }
+                });
+        } else {
+            axios.post(`http://localhost:8000/api/profile`, formData) // Changed PUT to POST here
+                .then(() => {
+                    // Navigate to the dashboard route upon successful profile creation
+                    window.location.href = '/dashboard';
+                })
+                .catch(err => {
+                    if (err.response && err.response.status === 400) {
+                        setError("Invalid data provided. Please check your inputs.");
+                    } else {
+                        setError("Error creating profile. Please try again later.");
+                    }
+                });
+        }
     };
 
     return (
@@ -52,4 +92,4 @@ const ProfileEditView = () => {
     );
 };
 
-export default ProfileEditView;
+export default EditView;

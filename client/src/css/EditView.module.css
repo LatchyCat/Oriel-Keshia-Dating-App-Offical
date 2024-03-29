@@ -1,0 +1,56 @@
+.ProfileBox {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #d664a7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .ProfileBox form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ProfileBox input[type="text"],
+  .ProfileBox input[type="checkbox"] {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .ProfileBox label {
+    margin: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ProfileBox button[type="submit"] {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7b7b;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .ProfileBox button[type="submit"]:hover {
+    background-color: #ff5a5a;
+  }
+
+  .error {
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid rgb(202, 30, 187);
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red background */
+  }

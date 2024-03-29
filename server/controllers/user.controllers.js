@@ -45,14 +45,12 @@ export const updateOneUser = async (req, res) => {
       options
     );
     if (!updatedUser) {
-      return res.status(404).json(err);
+      return res.status(404).json({ error: "User not found" });
     }
     res.json(updatedUser);
   } catch (error) {
     console.log("Error updating user:", error.message);
-    res
-      .status(400)
-      .json(error);
+    res.status(500).json({ error: "Failed to update user" });
   }
 };
 
@@ -165,5 +163,72 @@ export const getSecurityKeyHint = async (req, res) => {
     // Handle any errors
     console.error("Error retrieving security key hint:", error.message);
     res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+export const createOrUpdateProfile = async (req, res) => {
+  const userId = req.params.userId;
+  const profileData = req.body;
+
+  try {
+    // Check if userId is provided
+    if (!userId) {
+      return res.status(400).json({ error: "User ID is required." });
+    }
+
+    // Check if userId exists in the database (for updating)
+    // If userId exists, update the profile, otherwise, create a new one
+    const existingUser = await User.findById(userId);
+    if (existingUser) {
+      // Update existing profile
+      // Add validation logic if necessary
+      await Profile.findOneAndUpdate({ userId }, profileData);
+      return res.status(200).json({ message: "Profile updated successfully." });
+    } else {
+      // Create new profile
+      // Add validation logic if necessary
+      await Profile.create({ ...profileData, userId });
+      return res.status(201).json({ message: "Profile created successfully." });
+    }
+  } catch (error) {
+    console.error("Error creating/updating profile:", error);
+    return res.status(500).json({ error: "Internal server error." });
+  }
+};
+
+export const createMatchRequest = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const requestingUserId = req.user._id; // Assuming you have authentication middleware that adds the user object to the request
+    const recipientUserId = userId; // The ID of the recipient user
+
+    // Check if the requesting user is trying to match with themselves
+    if (requestingUserId === recipientUserId) {
+      return res.status(400).json({ error: "Cannot match with yourself" });
+    }
+
+    // Check if the requesting user has already sent a match request to the recipient user
+    if (user.matchRequests.includes(requestingUserId)) {
+      return res.status(400).json({ error: "Match request already sent" });
+    }
+
+    // Add the requesting user's ID to the recipient user's list of match requests
+    user.matchRequests.push(requestingUserId);
+
+    // Save the updated user document
+    await user.save();
+
+    // Return a success response
+    return res.status(200).json({ message: "Match request sent successfully" });
+  } catch (error) {
+    console.error("Error creating match request:", error.message);
+    return res.status(500).json({ error: "Internal server error" });
   }
 };

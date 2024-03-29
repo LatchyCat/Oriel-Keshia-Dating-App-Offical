@@ -22,6 +22,7 @@ const LoginView = () => {
                         .then((res) => {
                             // Handle successful login
                             console.log("Logged in successfully");
+                            window.location.href = '/dashboard';
                         })
                         .catch(err => setError("Invalid email or password. Please try again."));
                 } else {
