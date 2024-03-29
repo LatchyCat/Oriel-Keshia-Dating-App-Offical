@@ -2,17 +2,18 @@
 
 /* Container for BottomNav */
 .Footer {
-    position: fixed; /* Fixed position */
+    position: sticky; /* Fixed position */
     bottom: 0; /* Align to the bottom of the viewport */
     left: 0; /* Align to the left of the viewport */
-    width: 98%; /* Take up the full width */
+    width: 100%;
     background-color: #fff; /* White background color */
-    padding: 20px 0; /* Adjust padding as needed */
-    z-index: 999; /* Ensure it stays on top of other content */
+    padding: 10px;
+    z-index: 999;
     border: 5px solid rgb(31, 218, 177);
     border-radius: 5px;
+    overflow-x: hidden;
+    box-sizing: border-box;
     animation: borderAnimation 5s infinite alternate; /* Removed transition property */
-    margin: 10px;
 }
 
 @keyframes borderAnimation {
@@ -25,30 +26,24 @@
 
 .FooterContainer {
     max-width: 1200px; /* Limit maximum width */
-    margin: 0 auto; /* Center the content */
+    margin: 0 auto;
     display: flex;
     justify-content: space-around; /* Evenly space the content */
     align-items: center; /* Center the content vertically */
-
 }
 
 /* Footer links */
 .FooterLinks a {
-    color: #000; /* Black text color */
+    color: #fff; /* White text color */
     text-decoration: none; /* Remove underline */
-    margin-right: 20px; /* Adjust spacing between links */
     font-weight: bold; /* Bold font weight */
-    transition: color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
     padding: 10px 20px; /* Adjust padding as needed */
-    margin-right: 10px; /* Adjust spacing between buttons */
+    margin-right: 10px; /* Adjust spacing between links */
     border: 2px solid transparent; /* Transparent border */
     border-radius: 5px; /* Rounded corners */
     background-color: #09e9d3; /* Romantic pink background */
-    color: #fff; /* White text color */
-    text-decoration: none; /* Remove underline */
-    cursor: pointer;
     font-size: 16px; /* Default font size */
-    font-weight: bold;
+    cursor: pointer;
 }
 
 .FooterLinks a:hover {
@@ -58,22 +53,15 @@
 
 /* Social media icons */
 .SocialMedia a {
-    color: #000; /* Black text color */
+    color: #fff; /* White text color */
     text-decoration: none; /* Remove underline */
-    margin-right: 10px; /* Adjust spacing between icons */
-    font-size: 24px; /* Icon size */
-    transition: color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-
+    font-size: 18px; /* Default font size */
     padding: 10px 20px; /* Adjust padding as needed */
-    margin-right: 10px; /* Adjust spacing between buttons */
+    margin-right: 10px; /* Adjust spacing between icons */
     border: 2px solid transparent; /* Transparent border */
     border-radius: 5px; /* Rounded corners */
     background-color: #a26ec9; /* Romantic pink background */
-    color: #fff; /* White text color */
-    text-decoration: none; /* Remove underline */
     cursor: pointer;
-    font-size: 18px; /* Default font size */
-    font-weight: bold;
 }
 
 .SocialMedia a:hover {
@@ -83,20 +71,14 @@
 
 /* Copyright */
 .Copyright {
-    color: #000; /* Black text color */
-    font-size: 14px; /* Font size */
-    transition: box-shadow 0.3s ease; /* Smooth transition */
-
-    padding: 10px 20px;
-    margin-right: 10px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    background-color: #099ee9;
-    color: #fff;
-    text-decoration: none;
+    color: #fff; /* White text color */
+    font-size: 16px; /* Font size */
+    padding: 10px 20px; /* Adjust padding as needed */
+    margin-right: 10px; /* Adjust spacing between elements */
+    border: 2px solid transparent; /* Transparent border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #099ee9; /* Blue background color */
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
 }
 
 .Copyright:hover {

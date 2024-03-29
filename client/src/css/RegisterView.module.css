@@ -1,0 +1,78 @@
+.RegisterBox {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #d664a7;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition for smooth scaling and box-shadow */
+}
+
+.RegisterBox:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(164, 21, 105, 0.8); /* Increased blur radius for a brighter glow */
+}
+
+.RegisterBox form {
+  display: flex;
+  flex-direction: column;
+}
+
+.RegisterBox input[type="text"],
+.RegisterBox input[type="email"],
+.RegisterBox input[type="password"],
+.RegisterBox input[type="date"],
+.RegisterBox button {
+  margin: 10px;
+  padding: 10px;
+  width: calc(100% - 20px); /* Subtracting margin from width */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+
+.RegisterBox button {
+  background-color: #ff7b7b;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.RegisterBox button:hover {
+  background-color: #ff5a5a;
+}
+
+.error {
+  margin-top: 20px; /* Increased margin to separate error from other content */
+  color: rgb(255, 255, 255);
+  font-size: 18px; /* Increased font size for better visibility */
+  font-weight: bold; /* Make the error text bold */
+  padding: 15px; /* Increased padding to make the error stand out */
+  background-color: rgb(209, 17, 62); /* Background color for the error message */
+  border: 2px solid rgb(255, 0, 0); /* Red border around the error message */
+  border-radius: 10px; /* Increased border radius for a softer look */
+  text-align: center; /* Center-align the error message */
+  animation: shake 0.5s infinite alternate, glow 1.5s infinite alternate; /* Add animation effects */
+}
+
+/* Define shake animation */
+@keyframes shake {
+  from {
+    transform: translateX(-3px); /* Move error message slightly to the left */
+  }
+  to {
+    transform: translateX(3px); /* Move error message slightly to the right */
+  }
+}
+
+/* Define glow animation */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(202, 30, 187, 0.8); /* Initial shadow with higher opacity */
+  }
+  to {
+    box-shadow: 0 0 20px rgba(202, 30, 187, 0.8); /* Increased shadow with higher opacity */
+  }
+}

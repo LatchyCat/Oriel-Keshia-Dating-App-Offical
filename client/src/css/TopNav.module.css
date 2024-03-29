@@ -3,7 +3,8 @@
 /* Container for TopNav */
 .HoldingCell {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     border: 5px solid rgb(31, 218, 177);
     border-radius: 5px;
     transition: border-color 0.3s ease;
@@ -36,8 +37,9 @@
 
 .ButtonContainer {
     display: flex;
-    justify-content: space-evenly; /* Evenly space the buttons */
-    align-items: center;/* Center the buttons vertically */
+    justify-content: space-around;
+    align-items: center;
+    gap: 55px;
 }
 
 .ButtonContainer a {
@@ -72,12 +74,16 @@
     background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff); /* RGB color effect */
     color: #fff; /* White text color */
     border: 2px solid transparent; /* Transparent border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background 0.3s, border-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 /* Login button hover effect */
 .ButtonLogin:hover {
     background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff); /* Same RGB color effect on hover */
     border-color: #fff; /* White border color on hover */
+    color: #000; /* Black text color on hover */
 }
 
 /* Register button style */
@@ -87,88 +93,14 @@
     background: linear-gradient(45deg, #ff00ff, #ffff00, #ff0080); /* RGB color effect */
     color: #fff; /* White text color */
     border: 2px solid transparent; /* Transparent border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Add cursor pointer */
+    transition: background 0.3s, border-color 0.3s, color 0.3s; /* Smooth transition */
 }
 
 /* Register button hover effect */
 .ButtonRegister:hover {
     background: linear-gradient(45deg, #ff00ff, #ffff00, #ff0080); /* Same RGB color effect on hover */
     border-color: #fff; /* White border color on hover */
-}
-
-/* Dark mode button style */
-.DarkModeButton {
-    background-color: #333; /* Dark background color */
-    color: #fff; /* White text color */
-    border: none; /* No border */
-    padding: 10px 20px; /* Adjust padding as needed */
-    border-radius: 10px; /* Rounded corners */
-    cursor: pointer;
-    font-size: 16px; /* Default font size */
-    font-weight: bold; /* Default font weight */
-    transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-/* Dark mode button hover effect */
-.DarkModeButton:hover {
-    background-color: #555; /* Darker background color on hover */
-    transform: scale(1.05);
-}
-
-Dark mode styles
-.dark-mode .HoldingCell {
-    border-color: #777; /* Darker border color */
-}
-
-.dark-mode .StartBox {
-    background-color: #333; /* Dark background color */
-    color: #fff; /* Light text color */
-}
-
-.dark-mode .Button {
-    background-color: #777; /* Dark button background color */
-    color: #fff; /* Light text color */
-}
-
-.dark-mode .Button:hover {
-    background-color: #555; /* Darker button background color on hover */
-}
-
-/* Love mode button style */
-.LoveModeButton {
-    background-color: #ff69b4; /* Romantic pink background color */
-    color: #fff; /* White text color */
-    border: none; /* No border */
-    padding: 10px 20px; /* Adjust padding as needed */
-    border-radius: 10px; /* Rounded corners */
-    cursor: pointer;
-    font-size: 16px; /* Default font size */
-    font-weight: bold; /* Default font weight */
-    transition: background-color 0.3s ease; /* Smooth transition */
-    position: relative; /* Relative positioning */
-    margin: 8px;
-}
-
-/* Love mode button hover effect */
-.LoveModeButton:hover {
-    background-color: #ff1493; /* Darker pink background color on hover */
-    transform: scale(1.05);
-}
-
-/* Heart icon for love mode button */
-.LoveModeButton::before {
-    content: '\2665'; /* Heart icon */
-    position: absolute; /* Absolute positioning */
-    top: -10px; /* Position heart at the top */
-    right: -10px; /* Position heart at the right */
-    font-size: 24px; /* Heart icon size */
-}
-
-/* Love mode styles */
-.love-mode .Button {
-    background-color: #ffcccc; /* Romantic pink button background color */
-    color: #000; /* Black text color */
-}
-
-.love-mode .Button:hover {
-    background-color: #ff9999; /* Darker pink button background color on hover */
+    color: #000; /* Black text color on hover */
 }

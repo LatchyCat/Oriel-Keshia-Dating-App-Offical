@@ -1,0 +1,70 @@
+/* Expert.module.css */
+
+.MainExpert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #ff1493;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase; /* Convert text to uppercase */
+    letter-spacing: 2px; /* Add letter spacing for a modern feel */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add text shadow for depth */
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    background: linear-gradient(45deg, #ff1493, #ff6c40); /* Gradient background */
+    -webkit-background-clip: text; /* Clip text to background */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+}
+
+
+.VideoBox {
+    margin-top: 20px;
+    border: 3px solid #ff1493;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+    width: 30vw;
+}
+
+video {
+    display: block;
+    width: 100%;
+}
+
+.RegisterButton {
+    margin-top: 30px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.ButtonRegister {
+    padding: 12px 24px;
+    font-size: 60px;
+    background-color: #009e81;
+    color: #fff;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.ButtonRegister:hover {
+    background-color: #ff1493;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 20, 147, 0.5); /* Box shadow effect on hover */
+}
+
+.ExpertCell {
+    border: 3px hidden #ff1493; /* Border color */
+    border-radius: 20px; /* Rounded corners */
+    padding: 20px; /* Padding inside the frame */
+    box-shadow: 0 0 20px rgba(255, 20, 147, 0.5); /* Box shadow */
+}

@@ -1,43 +1,33 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import style from "../css/TopNav.module.css";
 
 const TopNav = ({ isLoggedIn }) => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [loveMode, setLoveMode] = useState(false);
-
-  const handleDarkModeClick = () => {
-    setDarkMode(!darkMode);
-    // Toggle dark mode class on body
-    document.body.classList.toggle('dark-mode');
-  };
-
-  const handleLoveModeClick = () => {
-    setLoveMode(!loveMode);
-    // Toggle love mode class on body
-    document.body.classList.toggle('love-mode');
-  };
+  const location = useLocation();
+  const isHomeRoute = location.pathname === '/';
+  const isDashboardRoute = location.pathname === '/dashboard';
+  const isEditRoute = location.pathname === '/edit';
+  const isProfileRoute = location.pathname === '/profile';
+  const isExpertRoute = location.pathname === '/expert';
+  const isRegisterRoute = location.pathname === '/register';
+  const isLoginRoute = location.pathname === '/login';
 
   return (
     <div className={style.HoldingCell}>
       <nav className={style.StartBox}>
         <div className={style.BoxTwo}>
           <div className={style.ButtonContainer}>
-            <NavLink to="/" className={style.Button}>DashBoard</NavLink>
-            <a href="#" className={style.Button}>Try for Free!</a>
-            <a href="#" className={style.Button}>Talk to an Expert</a>
-            <a href="#" className={style.Button}>Learn More</a>
-            {isLoggedIn ? (
-              <NavLink to="/login" className={style.ButtonLogin}>Login</NavLink>
-            ) : (
-              <NavLink to="/register" className={style.ButtonRegister}>Register</NavLink>
+            {/* Conditional rendering for Home button */}
+            {!isHomeRoute && <NavLink to="/" className={style.Button}>Home</NavLink>}
+            {/* Dashboard button is not shown on the '/' and '/login' routes */}
+            {!isHomeRoute && !isLoginRoute && !isRegisterRoute && !isExpertRoute && (
+              <NavLink to="/dashboard" className={style.Button}>Dashboard</NavLink>
             )}
-            <button className={darkMode ? `${style.DarkModeButton} ${style.Active}` : style.DarkModeButton} onClick={handleDarkModeClick}>
-              Dark Mode
-            </button>
-            <button className={loveMode ? `${style.LoveModeButton} ${style.Active}` : style.LoveModeButton} onClick={handleLoveModeClick}>
-              Love Mode
-            </button>
+            {!isExpertRoute && <NavLink to="/expert" className={style.Button}>Talk to an Expert</NavLink>}
+            {/* Always render login and register buttons */}
+            {(isHomeRoute || isRegisterRoute) && <NavLink to="/login" className={style.ButtonLogin}>Login</NavLink>}
+            {isHomeRoute && <NavLink to="/register" className={style.ButtonRegister}>Register</NavLink>}
+            {/* Conditionally render logout button */}
+            {(isDashboardRoute || isEditRoute || isProfileRoute) && <NavLink to="/logout" className={style.Button}>Logout</NavLink>}
           </div>
         </div>
       </nav>
