@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import style from '../css/LoginView.module.css';
 
@@ -9,6 +9,8 @@ const LoginView = () => {
     const [error, setError] = useState(null);
     const [securityKeyHint, setSecurityKeyHint] = useState('');
 
+    const nav = useNavigate()
+    
     const handleLogin = (e) => {
         e.preventDefault();
         // Check if the entered email address exists in the database
@@ -22,7 +24,7 @@ const LoginView = () => {
                         .then((res) => {
                             // Handle successful login
                             console.log("Logged in successfully");
-                            window.location.href = '/dashboard';
+                            nav(`/dashboard/${res.data._id}`);
                         })
                         .catch(err => setError("Invalid email or password. Please try again."));
                 } else {

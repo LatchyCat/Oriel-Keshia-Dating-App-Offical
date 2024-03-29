@@ -23,8 +23,8 @@ const App = () => {
           <Route path="/login" element={<LoginView />} />
 
           <Route path="/dashboard" element={<DashboardView />} />
-          <Route path="/profile/:userId" element={<ProfileView />} />
-          <Route path="/edit" element={<EditView />} />
+          <Route path="/profile/:id" element={<ProfileView />} />
+          <Route path="/edit/:id" element={<EditView />} />
 
           {/* <Route path="/match-request/:userId" element={<MatchRequestView />} /> */}
 

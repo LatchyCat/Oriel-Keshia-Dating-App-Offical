@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import style from '../css/RegisterView.module.css';
 
@@ -14,6 +14,8 @@ const RegisterView = ({ history }) => {
         confirmPassword: '',
         security_key_hint: ''
     });
+
+    const nav = useNavigate()
 
     const handleInputChange = (e) => {
         setFormData({
@@ -36,9 +38,9 @@ const RegisterView = ({ history }) => {
 
         // Continue with user registration if password is valid
         axios.post("http://localhost:8000/api/register", formData)
-            .then(() => {
+            .then((res) => {
                 // Navigate to '/edit' route after successful registration
-                window.location.href = '/edit'; // Redirect to '/edit' route
+                nav(`/edit/${res.data._id}`);
             })
             .catch(err => {
                 if (err.response && err.response.status === 409) {

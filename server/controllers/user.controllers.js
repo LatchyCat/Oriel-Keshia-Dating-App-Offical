@@ -108,10 +108,10 @@ export const registerUser = async (req, res) => {
 export const createProfile = async (req, res) => {
   try {
     const userId = req.params.userId; // Assuming the user ID is passed in the request params
-    const userProfile = await Profile.create(req.body); // Assuming req.body contains profile data
+    const userProfile = await User.profile.create(req.body); // Assuming req.body contains profile data
 
     // Associate the created profile with the registered user
-    await User.findByIdAndUpdate(userId, { profile: userProfile._id });
+    await User.findByIdAndUpdate(userId, { profile: User.profile.id });
 
     res.status(201).json(userProfile);
   } catch (err) {
@@ -168,12 +168,13 @@ export const getSecurityKeyHint = async (req, res) => {
 
 
 export const createOrUpdateProfile = async (req, res) => {
-  const userId = req.params.userId;
+  const userId = req.params._id;
   const profileData = req.body;
 
   try {
     // Check if userId is provided
     if (!userId) {
+      console.log('error')
       return res.status(400).json({ error: "User ID is required." });
     }
 
@@ -183,23 +184,20 @@ export const createOrUpdateProfile = async (req, res) => {
     if (existingUser) {
       // Update existing profile
       // Add validation logic if necessary
-      await Profile.findOneAndUpdate({ userId }, profileData);
+      await User.findOneAndUpdate({ _id: userId }, profileData, {upsert: true, runValidators: true});
       return res.status(200).json({ message: "Profile updated successfully." });
-    } else {
-      // Create new profile
-      // Add validation logic if necessary
-      await Profile.create({ ...profileData, userId });
-      return res.status(201).json({ message: "Profile created successfully." });
     }
   } catch (error) {
     console.error("Error creating/updating profile:", error);
-    return res.status(500).json({ error: "Internal server error." });
+    return res.status(400).json({ error: "Internal server error." });
   }
 };
 
+
+
 export const createMatchRequest = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { userId } = req.params._id;
     const user = await User.findById(userId);
 
     if (!user) {
@@ -230,5 +228,35 @@ export const createMatchRequest = async (req, res) => {
   } catch (error) {
     console.error("Error creating match request:", error.message);
     return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// User.findByIdAndUpdate(User.userId, {$set: {"profile.$": req.body}})
+
+export const readAllProfileId = async (id) => {
+  try {
+      // Make a GET request to fetch all profile IDs
+      const response = await axios.get(`http://localhost:8000/api/profiles/${id}`);
+
+      // Extract profile IDs from the response data
+      const profileIds = response.data.map(profile => profile._id);
+
+      return profileIds;
+  } catch (error) {
+      // Handle errors, such as network errors or server errors
+      console.error('Error fetching profile IDs:', error);
+      throw new Error('Failed to fetch profile IDs');
+  }
+};
+
+export const updateUserProfile = async (userId, profileData) => {
+  try {
+      // Update the user's profile using the provided userId and profileData
+      const updatedUser = await User.findByIdAndUpdate(userId, { $set: { "profile.$": profileData } });
+      return updatedUser;
+  } catch (error) {
+      // Handle errors, such as database errors or validation errors
+      console.error('Error updating user profile:', error);
+      throw new Error('Failed to update user profile');
   }
 };

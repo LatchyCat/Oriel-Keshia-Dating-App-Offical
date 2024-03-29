@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import style from '../css/EditView.module.css';
 
@@ -15,10 +15,11 @@ const EditView = () => {
     const [error, setError] = useState(null);
     const { id } = useParams();
 
+    const nav = useNavigate();
 
     useEffect(() => {
         if (id) {
-            axios.put(`http://localhost:8000/api/profile/${id}`)
+            axios.get(`http://localhost:8000/api/profile/${id}`)
                 .then(res => {
                     const { profile_name, interests, ethnicity, isEmployed, city, state } = res.data;
                     setFormData({
@@ -45,10 +46,10 @@ const EditView = () => {
         e.preventDefault();
         // Add validation logic for profile form fields if needed
         if (id) {
-            axios.put(`http://localhost:8000/api/profile/${id}`, formData)
-                .then(() => {
+            axios.post(`http://localhost:8000/api/profile/${id}`, formData)
+                .then(res => {
                     // Navigate to the dashboard route upon successful profile update
-                    window.location.href = '/dashboard';
+                    nav(`/dashboard/${res.data._id}`);
                 })
                 .catch(err => {
                     if (err.response && err.response.status === 400) {
@@ -58,10 +59,10 @@ const EditView = () => {
                     }
                 });
         } else {
-            axios.post(`http://localhost:8000/api/profile`, formData) // Changed PUT to POST here
-                .then(() => {
+            axios.post(`http://localhost:8000/api/profile`, formData)
+                .then(res => {
                     // Navigate to the dashboard route upon successful profile creation
-                    window.location.href = '/dashboard';
+                    nav(`/dashboard/${res.data._id}`);
                 })
                 .catch(err => {
                     if (err.response && err.response.status === 400) {
