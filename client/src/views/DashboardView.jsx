@@ -9,7 +9,7 @@ const DashboardView = () => {
 
     useEffect(() => {
         // Fetch all users when the component mounts
-        axios.get("http://localhost:8000/api/dashboard")
+        axios.get("http://localhost:8000/api/users")
             .then(res => setUsers(res.data))
             .catch(err => setError("Error fetching users. Please try again later."));
     }, []);
@@ -69,7 +69,7 @@ const DashboardView = () => {
     // Function to handle deleting a potential match
     const handleDeleteMatch = async (userId) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/delete-match/${userId}`);
+            const response = await axios.delete(`http://localhost:8000/api/love-match/${userId}`);
             console.log("Match deleted successfully:", response.data);
             // Implement further logic as needed after deleting the match
         } catch (error) {
@@ -82,7 +82,6 @@ const DashboardView = () => {
         <div className={style.DashboardContainer}>
         <h1>Start Matching Now!</h1>
         <div className={style.FeatureList}>
-            <button onClick={handleFindMatches}>Find Matches</button>
             <div className={style.ProfilesContainer}>
                 <h2>All Profiles</h2>
                 <table>
@@ -101,7 +100,32 @@ const DashboardView = () => {
                                 <td>{user.profile && user.profile.state ? user.profile.state : "N/A"}</td>
                                 <td>{user.createdAt}</td>
                                 <td>
-                                    <button onClick={() => handleDeleteMatch(user._id)}>Delete</button>
+                                    <button onClick={() => handleDeleteMatch(user.profile._id)}>Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+            <div className={style.ProfilesContainer}>
+                <h2>All Matches</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profile Name</th>
+                            <th>State</th>
+                            <th>Created At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user, index) => (
+                            <tr key={index}>
+                                <td>{user.profile && user.profile.profile_name ? user.profile.profile_name : "N/A"}</td>
+                                <td>{user.profile && user.profile.state ? user.profile.state : "N/A"}</td>
+                                <td>{user.createdAt}</td>
+                                <td>
+                                    <button onClick={() => handleDeleteMatch(user.profile._id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
@@ -109,16 +133,11 @@ const DashboardView = () => {
                 </table>
             </div>
         </div>
-
-                <NavLink to="/my-matches">
-                    <button>My Matches</button>
-                </NavLink>
-
-
-        <div className={marriedButton}>
+        <div className={style.marriedButton}>
             <NavLink to="/recently-married"> <button>Recently Married</button> </NavLink>
         </div>
     </div>
+
 
     );
 };

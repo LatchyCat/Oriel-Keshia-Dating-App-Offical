@@ -1,0 +1,85 @@
+.DashboardContainer {
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #ff6b6b;
+    margin-bottom: 30px;
+}
+
+.FeatureList {
+    display: flex;
+    justify-content: space-around; /* Change this to space-around */
+    align-items: flex-start; /* Align items to the top */
+    flex-wrap: wrap; /* Allow items to wrap */
+    margin-bottom: 50px;
+}
+
+button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4d4d;
+}
+
+.ProfilesContainer {
+    margin-top: 30px;
+    width: 45%; /* Set width to 45% */
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #ffc2b3;
+}
+
+.marriedButton {
+    margin-top: 50px;
+}
+
+.marriedButton button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.marriedButton button:hover {
+    background-color: #ff4d4d;
+}

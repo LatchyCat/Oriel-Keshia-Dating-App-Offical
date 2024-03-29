@@ -46,10 +46,10 @@ const EditView = () => {
         e.preventDefault();
         // Add validation logic for profile form fields if needed
         if (id) {
-            axios.post(`http://localhost:8000/api/profile/${id}`, formData)
+            axios.put(`http://localhost:8000/api/profile/${id}`, formData)
                 .then(res => {
                     // Navigate to the dashboard route upon successful profile update
-                    nav(`/dashboard/${res.data._id}`);
+                    nav(`/dashboard/${id}`);
                 })
                 .catch(err => {
                     if (err.response && err.response.status === 400) {
@@ -62,7 +62,7 @@ const EditView = () => {
             axios.post(`http://localhost:8000/api/profile`, formData)
                 .then(res => {
                     // Navigate to the dashboard route upon successful profile creation
-                    nav(`/dashboard/${res.data._id}`);
+                    nav(`/dashboard/${id}`);
                 })
                 .catch(err => {
                     if (err.response && err.response.status === 400) {
