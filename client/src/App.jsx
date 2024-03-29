@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TopNav from './components/TopNav.jsx'
+import BottomNav from './components/BottomNav.jsx'
 // import BottomNav from './components/BottomNav'
 // import DashboardView from './views/DashboardView.jsx'
 // import EditView from './views/EditView.jsx'
@@ -18,7 +19,9 @@ const App = () => {
 
 
       </Routes>
+      <BottomNav />
       </BrowserRouter>
+
    </div>
   )
 }
